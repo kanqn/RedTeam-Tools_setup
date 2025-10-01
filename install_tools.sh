@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# カラー定義
+# Color definitions
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# ログ関数
+# Logging functions
 log_info() {
     echo -e "${BLUE}[INFO]${NC} $1"
 }
@@ -24,9 +24,9 @@ log_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
-# 必要なコマンドのチェック
+# Check required commands
 check_requirements() {
-    log_info "必要なコマンドをチェック中..."
+    log_info "Checking required commands..."
     
     local required_commands=("git" "curl" "wget")
     local missing_commands=()
@@ -38,24 +38,24 @@ check_requirements() {
     done
     
     if [ ${#missing_commands[@]} -ne 0 ]; then
-        log_error "以下のコマンドがインストールされていません: ${missing_commands[*]}"
-        log_info "以下のコマンドでインストールできます:"
+        log_error "The following commands are not installed: ${missing_commands[*]}"
+        log_info "You can install them with:"
         echo "  sudo apt-get install -y ${missing_commands[*]}"
         exit 1
     fi
     
-    # yqのチェック（YAMLパーサー）
+    # Check for yq (YAML parser)
     if ! command -v yq &> /dev/null; then
-        log_warning "yqがインストールされていません。インストールを試みます..."
+        log_warning "yq is not installed. Attempting to install..."
         install_yq
     fi
     
-    log_success "すべての必要なコマンドが利用可能です"
+    log_success "All required commands are available"
 }
 
-# yqのインストール
+# Install yq
 install_yq() {
-    log_info "yqをインストール中..."
+    log_info "Installing yq..."
     
     local YQ_VERSION="v4.35.1"
     local YQ_BINARY="yq_linux_amd64"
@@ -65,25 +65,25 @@ install_yq() {
     if [ $? -eq 0 ]; then
         sudo chmod +x /tmp/yq
         sudo mv /tmp/yq /usr/local/bin/yq
-        log_success "yqのインストールが完了しました"
+        log_success "yq installation completed"
     else
-        log_error "yqのインストールに失敗しました"
-        log_info "代替方法でYAMLを解析します"
+        log_error "Failed to install yq"
+        log_info "Will parse YAML using alternative method"
     fi
 }
 
-# ディレクトリ構造の作成
+# Create directory structure
 create_directory_structure() {
-    log_info "ディレクトリ構造を作成中..."
+    log_info "Creating directory structure..."
     
     mkdir -p Tools
     mkdir -p Tools/Windows-Weapons
     mkdir -p Tools/Linux-Weapons
     
-    log_success "ディレクトリ構造の作成が完了しました"
+    log_success "Directory structure creation completed"
 }
 
-# Gitリポジトリのクローン
+# Clone Git repository
 clone_repository() {
     local name=$1
     local url=$2
@@ -92,24 +92,24 @@ clone_repository() {
     local target_path="${directory}/${name}"
     
     if [ -d "$target_path" ]; then
-        log_warning "${name} は既に存在します。スキップします"
+        log_warning "${name} already exists. Skipping"
         return 0
     fi
     
-    log_info "クローン中: ${name} -> ${target_path}"
+    log_info "Cloning: ${name} -> ${target_path}"
     
     git clone --depth 1 "$url" "$target_path" 2>/dev/null
     
     if [ $? -eq 0 ]; then
-        log_success "${name} のクローンが完了しました"
+        log_success "Cloning ${name} completed"
         return 0
     else
-        log_error "${name} のクローンに失敗しました"
+        log_error "Failed to clone ${name}"
         return 1
     fi
 }
 
-# ファイルの直接ダウンロード
+# Direct file download
 download_file() {
     local name=$1
     local url=$2
@@ -118,29 +118,29 @@ download_file() {
     local target_path="${directory}/${name}"
     
     if [ -f "$target_path" ]; then
-        log_warning "${name} は既に存在します。スキップします"
+        log_warning "${name} already exists. Skipping"
         return 0
     fi
     
-    log_info "ダウンロード中: ${name} -> ${target_path}"
+    log_info "Downloading: ${name} -> ${target_path}"
     
     wget -q --show-progress "$url" -O "$target_path"
     
     if [ $? -eq 0 ]; then
         chmod +x "$target_path" 2>/dev/null
-        log_success "${name} のダウンロードが完了しました"
+        log_success "Download of ${name} completed"
         return 0
     else
-        log_error "${name} のダウンロードに失敗しました"
+        log_error "Failed to download ${name}"
         return 1
     fi
 }
 
-# YAMLファイルが存在する場合の処理（yqを使用）
+# Process YAML file using yq
 install_from_yaml_with_yq() {
     local yaml_file=$1
     
-    log_info "YAMLファイルから一般ツールをインストール中..."
+    log_info "Installing general tools from YAML file..."
     local tools_count=$(yq eval '.tools | length' "$yaml_file")
     for ((i=0; i<$tools_count; i++)); do
         local name=$(yq eval ".tools[$i].name" "$yaml_file")
@@ -148,7 +148,7 @@ install_from_yaml_with_yq() {
         clone_repository "$name" "$url" "Tools"
     done
     
-    log_info "YAMLファイルからLinux-Weaponsをインストール中..."
+    log_info "Installing Linux-Weapons from YAML file..."
     local linux_count=$(yq eval '.linux_weapons | length' "$yaml_file")
     for ((i=0; i<$linux_count; i++)); do
         local name=$(yq eval ".linux_weapons[$i].name" "$yaml_file")
@@ -156,7 +156,7 @@ install_from_yaml_with_yq() {
         clone_repository "$name" "$url" "Tools/Linux-Weapons"
     done
     
-    log_info "YAMLファイルからWindows-Weaponsをインストール中..."
+    log_info "Installing Windows-Weapons from YAML file..."
     local windows_count=$(yq eval '.windows_weapons | length' "$yaml_file")
     for ((i=0; i<$windows_count; i++)); do
         local name=$(yq eval ".windows_weapons[$i].name" "$yaml_file")
@@ -164,17 +164,17 @@ install_from_yaml_with_yq() {
         clone_repository "$name" "$url" "Tools/Windows-Weapons"
     done
     
-    log_info "直接ダウンロードファイルを取得中..."
+    log_info "Fetching direct download files..."
     local direct_tools_count=$(yq eval '.direct_downloads.tools | length' "$yaml_file")
     for ((i=0; i<$direct_tools_count; i++)); do
         local name=$(yq eval ".direct_downloads.tools[$i].name" "$yaml_file")
         local url=$(yq eval ".direct_downloads.tools[$i].url" "$yaml_file")
         
-        # URLが実際のファイルへの直接リンクの場合のみダウンロード
+        # Download only if URL is a direct file link
         if [[ "$url" == *.exe ]] || [[ "$url" == *.ps1 ]] || [[ "$url" == *.sh ]]; then
             download_file "$name" "$url" "Tools"
         else
-            log_warning "${name} はリリースページへのリンクです。手動でダウンロードしてください: $url"
+            log_warning "${name} is a link to release page. Please download manually: $url"
         fi
     done
     
@@ -186,11 +186,11 @@ install_from_yaml_with_yq() {
         if [[ "$url" == *.exe ]] || [[ "$url" == *.zip ]]; then
             download_file "$name" "$url" "Tools/Windows-Weapons"
         else
-            log_warning "${name} はリリースページへのリンクです。手動でダウンロードしてください: $url"
+            log_warning "${name} is a link to release page. Please download manually: $url"
         fi
     done
     
-    log_info "特殊なインストールを実行中..."
+    log_info "Executing special installations..."
     local special_count=$(yq eval '.special_installs | length' "$yaml_file")
     for ((i=0; i<$special_count; i++)); do
         local name=$(yq eval ".special_installs[$i].name" "$yaml_file")
@@ -201,23 +201,23 @@ install_from_yaml_with_yq() {
         if [ "$url" != "null" ]; then
             download_file "$name" "$url" "$directory"
         elif [ "$command" != "null" ]; then
-            log_info "特殊コマンドを実行: ${name}"
+            log_info "Executing special command: ${name}"
             eval "$command" > "${directory}/${name}"
             chmod +x "${directory}/${name}"
-            log_success "${name} の取得が完了しました"
+            log_success "Successfully retrieved ${name}"
         fi
     done
 }
 
-# yqが利用できない場合の代替処理（基本的なリストのみ）
+# Fallback when yq is not available (basic list only)
 install_from_yaml_fallback() {
-    log_warning "yqが利用できないため、手動でリポジトリをクローンします"
-    log_info "この処理には時間がかかる場合があります..."
+    log_warning "yq is not available, will clone repositories manually"
+    log_info "This process may take some time..."
     
-    # ここにハードコードされたリストを使用（最小限）
-    log_info "主要なツールのみをインストールします..."
+    # Use hardcoded list (minimal)
+    log_info "Installing essential tools only..."
     
-    # Tools ディレクトリ
+    # Tools directory
     declare -A tools_repos=(
         ["BloodHound.py"]="https://github.com/dirkjanm/BloodHound.py"
         ["chisel"]="https://github.com/jpillora/chisel"
@@ -252,33 +252,33 @@ install_from_yaml_fallback() {
         clone_repository "$name" "${windows_repos[$name]}" "Tools/Windows-Weapons"
     done
     
-    log_warning "完全なインストールを行うには、yqをインストールしてスクリプトを再実行してください"
+    log_warning "To perform a complete installation, install yq and re-run the script"
 }
 
-# メイン処理
+# Main process
 main() {
     echo "=========================================="
-    echo "  Tools for RedTeam Pentesters"
+    echo "  Security Tools Auto Installer"
     echo "=========================================="
     echo ""
     
     local yaml_file="tools_config.yaml"
     
-    # 要件チェック
+    # Requirements check
     check_requirements
     
-    # ディレクトリ作成
+    # Create directories
     create_directory_structure
     
-    # YAMLファイルの存在確認
+    # Check YAML file existence
     if [ ! -f "$yaml_file" ]; then
-        log_error "YAMLファイル '$yaml_file' が見つかりません"
-        log_info "tools_config.yaml を同じディレクトリに配置してください"
+        log_error "YAML file '$yaml_file' not found"
+        log_info "Please place tools_config.yaml in the same directory"
         exit 1
     fi
     
-    # インストール開始
-    log_info "インストールを開始します..."
+    # Start installation
+    log_info "Starting installation..."
     echo ""
     
     if command -v yq &> /dev/null; then
@@ -288,15 +288,15 @@ main() {
     fi
     
     echo ""
-    log_success "すべてのインストールが完了しました！"
+    log_success "All installations completed!"
     echo ""
-    log_info "インストール先:"
+    log_info "Installation directories:"
     echo "  - Tools/"
     echo "  - Tools/Linux-Weapons/"
     echo "  - Tools/Windows-Weapons/"
     echo ""
-    log_warning "注意: 一部のツールはリリースページからの手動ダウンロードが必要です"
+    log_warning "Note: Some tools require manual download from release pages"
 }
 
-# スクリプト実行
+# Execute script
 main "$@"
