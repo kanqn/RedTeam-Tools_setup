@@ -1,0 +1,315 @@
+tools:
+  - name: AvaloniaILSpy
+    url: https://github.com/icsharpcode/AvaloniaILSpy
+    
+  - name: BloodHound.py
+    url: https://github.com/dirkjanm/BloodHound.py
+    
+  - name: chisel
+    url: https://github.com/jpillora/chisel
+    
+  - name: CVE-2017-0199
+    url: https://github.com/likekabin/CVE-2017-0199
+    
+  - name: CVE-2018-9276
+    url: https://github.com/A1vinSmith/CVE-2018-9276
+    
+  - name: CVE-2021-22204-exiftool
+    url: https://github.com/convisolabs/CVE-2021-22204-exiftool
+    
+  - name: CVE-2024-6387
+    url: https://github.com/Karmakstylez/CVE-2024-6387
+    
+  - name: CVE-2022-0847-DirtyPipe-Exploits
+    url: https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits
+    
+  - name: dnscat2
+    url: https://github.com/iagox86/dnscat2
+    
+  - name: Ghostpack-CompiledBinaries
+    url: https://github.com/r3motecontrol/Ghostpack-CompiledBinaries
+    
+  - name: git-dumper
+    url: https://github.com/arthaud/git-dumper
+    
+  - name: GodPotato
+    url: https://github.com/BeichenDream/GodPotato
+    
+  - name: juicypotato
+    url: https://github.com/ohpe/juicy-potato
+    
+  - name: go-windapsearch
+    url: https://github.com/ropnop/go-windapsearch
+    
+  - name: impacket
+    url: https://github.com/ropnop/impacket_static_binaries
+    
+  - name: jwt-tool
+    url: https://github.com/ticarpi/jwt_tool
+    
+  - name: kerbrute
+    url: https://github.com/TarlogicSecurity/kerbrute
+    
+  - name: ligolo-ng
+    url: https://github.com/nicocha30/ligolo-ng
+    
+  - name: maskphish
+    url: https://github.com/keleis22/maskphish
+    
+  - name: merlin
+    url: https://github.com/Ne0nd0g/merlin
+    
+  - name: mimikatz
+    url: https://github.com/ParrotSec/mimikatz
+    
+  - name: nc.exe
+    url: https://github.com/int0x33/nc.exe/
+    
+  - name: ntlm_theft
+    url: https://github.com/Greenwolf/ntlm_theft
+    
+  - name: nmapAutomator
+    url: https://github.com/21y4d/nmapAutomator
+    
+  - name: onesixtyone
+    url: https://github.com/trailofbits/onesixtyone
+    
+  - name: osCommerce-2.3.4-Remote-Command-Execution
+    url: https://github.com/nobodyatall648/osCommerce-2.3.4-Remote-Command-Execution
+    
+  - name: penelope
+    url: https://github.com/brightio/penelope
+    
+  - name: PostgreSQL_RCE
+    url: https://github.com/squid22/PostgreSQL_RCE
+    
+  - name: powercat
+    url: https://github.com/besimorhino/powercat
+    
+  - name: powermad
+    url: https://github.com/Kevin-Robertson/Powermad
+    
+  - name: powersploit
+    url: https://github.com/PowerShellMafia/PowerSploit
+    
+  - name: pspy
+    url: https://github.com/DominicBreuker/pspy
+    
+  - name: pyGPOAbuse
+    url: https://github.com/Hackndo/pyGPOAbuse
+    
+  - name: pyLAPS
+    url: https://github.com/p0dalirius/pyLAPS
+    
+  - name: pypykatz
+    url: https://github.com/skelsec/pypykatz
+    
+  - name: RedisModules-ExecuteCommand
+    url: https://github.com/n0b0dyCN/RedisModules-ExecuteCommand
+    
+  - name: redis-rce
+    url: https://github.com/jas502n/Redis-RCE
+    
+  - name: SeBackupPrivilege
+    url: https://github.com/giuliano108/SeBackupPrivilege
+    
+  - name: SharpEfsPotato
+    url: https://github.com/bugch3ck/SharpEfsPotato
+    
+  - name: SharpHound
+    url: https://github.com/SpecterOps/SharpHound
+    
+  - name: sippts
+    url: https://github.com/Pepelux/sippts
+    
+  - name: smtp-user-enum
+    url: https://github.com/cytopia/smtp-user-enum
+    
+  - name: spose
+    url: https://github.com/aancw/spose
+    
+  - name: sudoedit
+    url: https://github.com/n3m1sys/CVE-2023-22809-sudoedit-privesc
+    
+  - name: tftptheft
+    url: https://github.com/EnableSecurity/tftptheft
+    
+  - name: through_the_wire
+    url: https://github.com/jbaines-r7/through_the_wire
+    
+  - name: Toolies
+    url: https://github.com/expl0itabl3/Toolies
+    
+  - name: Umbraco-RCE
+    url: https://github.com/Jonoans/Umbraco-RCE
+    
+  - name: unix-privesc-check
+    url: https://github.com/pentestmonkey/unix-privesc-check
+    
+  - name: windapsearch
+    url: https://github.com/ropnop/windapsearch
+    
+  - name: Windows-Exploit-Suggester
+    url: https://github.com/Pwnistry/Windows-Exploit-Suggester-python3
+    
+  - name: windows-kernel-exploits
+    url: https://github.com/SecWiki/windows-kernel-exploits
+    
+  - name: winPEAS
+    url: https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
+    
+  - name: ysoserial
+    url: https://github.com/frohoff/ysoserial
+
+linux_weapons:
+  - name: baronsamedit
+    url: https://github.com/blasty/CVE-2021-3156
+    
+  - name: pwnkit
+    url: https://github.com/locksec/CVE-2021-4034
+    
+  - name: DirtyPipe-Exploits
+    url: https://github.com/AlexisAhmed/CVE-2022-0847-DirtyPipe-Exploits
+    
+  - name: DirtyPipe-Checker
+    url: https://github.com/basharkey/CVE-2022-0847-dirty-pipe-checker
+    
+  - name: fail2ban
+    url: https://github.com/fail2ban/fail2ban
+    
+  - name: jdwp-shellifier
+    url: https://github.com/IOActive/jdwp-shellifier
+    
+  - name: linux-exploit-suggester
+    url: https://github.com/The-Z-Labs/linux-exploit-suggester
+    
+  - name: linux-exploit-suggester-2
+    url: https://github.com/jondonas/linux-exploit-suggester-2
+    
+  - name: linux-smart-enumeration
+    url: https://github.com/diego-treitos/linux-smart-enumeration
+    
+  - name: CVE-2021-22555
+    url: https://github.com/google/security-research/tree/master/pocs/linux/cve-2021-22555
+    
+  - name: CVE-2022-2586
+    url: https://github.com/aels/CVE-2022-2586-LPE
+    
+  - name: CVE-2022-32250
+    url: https://github.com/theori-io/CVE-2022-32250-exploit
+    
+  - name: PwnKit
+    url: https://github.com/ly4k/PwnKit
+    
+  - name: screen-v4.5.0
+    url: https://github.com/YasserREED/screen-v4.5.0-priv-escalate
+    
+  - name: Sudo-1.8.31-Root-Exploit
+    url: https://github.com/mohinparamasivam/Sudo-1.8.31-Root-Exploit
+    
+  - name: SUID3NUM
+    url: https://github.com/Anon-Exploiter/SUID3NUM
+    
+  - name: pspy
+    url: https://github.com/DominicBreuker/pspy
+
+windows_weapons:
+  - name: ADRecon
+    url: https://github.com/adrecon/ADRecon
+    
+  - name: BarracudaDrivev6.5-LPE
+    url: https://github.com/boku7/BarracudaDrivev6.5-LocalPrivEsc
+    
+  - name: aspx-reverse-shell
+    url: https://github.com/borjmz/aspx-reverse-shell
+    
+  - name: FullPowers
+    url: https://github.com/itm4n/FullPowers
+    
+  - name: GodPotato
+    url: https://github.com/BeichenDream/GodPotato
+    
+  - name: hash-dumper
+    url: https://github.com/Retr0-code/hash-dumper
+    
+  - name: RunasCs
+    url: https://github.com/antonioCoco/RunasCs
+    
+  - name: juicypotato
+    url: https://github.com/ohpe/juicy-potato
+    
+  - name: lsassy
+    url: https://github.com/login-securite/lsassy
+    
+  - name: mimikatz
+    url: https://github.com/ParrotSec/mimikatz
+    
+  - name: Privilege-Escalation-Windows
+    url: https://github.com/NyaMeeEain/Privilege-Escalation-Windows
+    
+  - name: rbcd-attack
+    url: https://github.com/tothi/rbcd-attack
+    
+  - name: SeBackupPrivilege
+    url: https://github.com/k4sth4/SeBackupPrivilege
+    
+  - name: SharpGPOAbuse
+    url: https://github.com/byronkg/SharpGPOAbuse
+    
+  - name: SharpHound
+    url: https://github.com/SpecterOps/SharpHound
+    
+  - name: targetedKerberoast
+    url: https://github.com/ShutdownRepo/targetedKerberoast
+    
+  - name: winPEAS
+    url: https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
+
+direct_downloads:
+  tools:
+    - name: GodPotato-NET4.exe
+      url: https://github.com/BeichenDream/GodPotato/releases
+      
+    - name: LaZagne.exe
+      url: https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.7/LaZagne.exe
+      
+    - name: PrintSpoofer.exe
+      url: https://github.com/itm4n/PrintSpoofer/releases
+      
+    - name: Rubeus.exe
+      url: https://github.com/GhostPack/Rubeus
+      
+    - name: sherlock.ps1
+      url: https://github.com/rasta-mouse/Sherlock
+      
+    - name: powerview.ps1
+      url: https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon
+      
+  windows_weapons:
+    - name: FullPowers.exe
+      url: https://github.com/itm4n/FullPowers/releases/download/v0.1/FullPowers.exe
+      
+    - name: GodPotato-NET4.exe
+      url: https://github.com/BeichenDream/GodPotato/releases
+      
+    - name: hash_dumper.zip
+      url: https://github.com/Retr0-code/hash-dumper/releases/download/v1.0.4/hash_dumper_v1.0.4_win64.zip
+      
+    - name: LaZagne.exe
+      url: https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.7/LaZagne.exe
+      
+    - name: SeManageVolumeExploit.exe
+      url: https://github.com/CsEnox/SeManageVolumeExploit/releases/download/public/SeManageVolumeExploit.exe
+
+special_installs:
+  - name: LinPEAS.sh
+    command: curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
+    directory: Tools
+    
+  - name: HP-UX10-20.pl
+    url: https://www.exploit-db.com/download/19535
+    directory: Tools/Linux-Weapons
+    
+  - name: rds_exploit.c
+    url: https://www.exploit-db.com/download/15285
+    directory: Tools/Linux-Weapons
